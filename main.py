@@ -4,14 +4,14 @@ import keyboard
 
 game = Ursina()
 
-grass = load_texture('textures/grass.png')
-land = load_texture('textures/land.jpg')
-sky = load_texture('textures/sky.png')
-books = load_texture('textures/books.jpg')
-bricks = load_texture('textures/bricks.jpg')
-sand = load_texture('textures/sand.jpg')
-tree = load_texture('textures/tree.png')
-grass_and_land = load_texture('textures/grass_and_land.jpg')
+grass = load_texture('grass.png')
+land = load_texture('land.jpg')
+sky = load_texture('sky.png')
+books = load_texture('books.jpg')
+bricks = load_texture('bricks.jpg')
+sand = load_texture('sand.jpg')
+tree = load_texture('tree.png')
+grass_and_land = load_texture('grass_and_land.jpg')
 
 main_texture = land
 
