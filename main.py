@@ -4,14 +4,14 @@ import keyboard
 
 game = Ursina()
 
-grass = load_texture('grass.png')
-land = load_texture('land.jpg')
-sky = load_texture('sky.png')
-books = load_texture('books.jpg')
-bricks = load_texture('bricks.jpg')
-sand = load_texture('sand.jpg')
-tree = load_texture('tree.png')
-grass_and_land = load_texture('grass_and_land.jpg')
+grass = load_texture('textures/grass.png')
+land = load_texture('textures/land.jpg')
+sky = load_texture('textures/sky.png')
+books = load_texture('textures/books.jpg')
+bricks = load_texture('textures/bricks.jpg')
+sand = load_texture('textures/sand.jpg')
+tree = load_texture('textures/tree.png')
+grass_and_land = load_texture('textures/grass_and_land.jpg')
 
 main_texture = land
 
@@ -19,6 +19,8 @@ main_texture = land
 def update():
     global main_texture
 
+    if held_keys['0']:
+        main_texture = grass
     if held_keys['1']:
         main_texture = land
     if held_keys['2']:
@@ -78,36 +80,14 @@ class Management(Button):
                 destroy(self)
 
 
-for z in range(50):
-    for x in range(50):
-        # for y in range(2):
-        Management((x, 0, z))
+for z in range(40):
+    for x in range(40):
+        for y in range(3):
+            management = Management((x, y, z))
 
 
-class Player(FirstPersonController):
-    def __init__(self):
-        super().__init__()
-        self.speed = 3
-
-    def input(self, key):
-        if keyboard.is_pressed(87):
-            end_position = self.position + self.forward * self.speed
-            self.animate('position', end_position, duration=0.1)
-        if keyboard.is_pressed(83):
-            end_position = self.position - self.forward * self.speed
-            self.animate('position', end_position, duration=0.1)
-        if keyboard.is_pressed(68):
-            end_position = self.position + self.right * self.speed
-            self.animate('position', end_position, duration=0.1)
-        if keyboard.is_pressed(65):
-            end_position = self.position - self.right * self.speed
-            self.animate('position', end_position, duration=0.1)
-        if keyboard.is_pressed('space'):
-            end_position = self.position + self.up * 7
-            self.animate('position', end_position, duration=1)
-
-
-player = Player()
+player = FirstPersonController()
 sky = Sky(texture=sky)
 hand = Hand()
 game.run()
+
